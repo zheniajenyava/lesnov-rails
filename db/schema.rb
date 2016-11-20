@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161120184648) do
+ActiveRecord::Schema.define(version: 20161120200812) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -31,6 +31,11 @@ ActiveRecord::Schema.define(version: 20161120184648) do
   add_index "articles", ["language_id"], name: "index_articles_on_language_id", using: :btree
   add_index "articles", ["president_id"], name: "index_articles_on_president_id", using: :btree
 
+  create_table "articles_productions", id: false, force: true do |t|
+    t.integer "article_id",    null: false
+    t.integer "production_id", null: false
+  end
+
   create_table "citizen_ships", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -43,6 +48,16 @@ ActiveRecord::Schema.define(version: 20161120184648) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "gov_prods", force: true do |t|
+    t.integer  "articles_id"
+    t.integer  "production_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "gov_prods", ["articles_id"], name: "index_gov_prods_on_articles_id", using: :btree
+  add_index "gov_prods", ["production_id"], name: "index_gov_prods_on_production_id", using: :btree
 
   create_table "languages", force: true do |t|
     t.string   "name"
@@ -69,6 +84,12 @@ ActiveRecord::Schema.define(version: 20161120184648) do
 
   add_index "presidents", ["citizen_ship_id"], name: "index_presidents_on_citizen_ship_id", using: :btree
   add_index "presidents", ["sex_id"], name: "index_presidents_on_sex_id", using: :btree
+
+  create_table "productions", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sexes", force: true do |t|
     t.string   "name"

@@ -23,6 +23,14 @@
 	<%= f.select :president_id, options_from_collection_for_select(President.all, :id, :name_of_president, :prompt => true) %>
   </p>
   <p>
+	<%= f.label :'Производство'%><br>
+
+
+	<%= f.collection_check_boxes(:production_ids, Production.all, :id, :name_with_initial) do |item| %>
+		<%= item.label(:"data-value" => item.value) { item.check_box + item.text }%>
+	<% end %>
+  </p>
+  <p>
     <%= f.submit %>
   </p>
 <% end %>
