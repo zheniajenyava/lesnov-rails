@@ -14,7 +14,14 @@
 	<%= f.select :language_id, options_from_collection_for_select(Language.all, :id, :name) %>
 
   </p>
- 
+  <p>
+	<%= f.label :'Форма правления'%><br>
+	<%= f.collection_radio_buttons :form_rules_id, FormRules.all, :id, :name_with_initial %>
+  </p> 
+   <p>
+	<%= f.label :'Президент'%><br>
+	<%= f.select :president_id, options_from_collection_for_select(President.all, :id, :name_of_president, :prompt => true) %>
+  </p>
   <p>
     <%= f.submit %>
   </p>

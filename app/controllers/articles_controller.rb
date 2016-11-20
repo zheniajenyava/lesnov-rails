@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
 def new
   end
  def create
- @article = Article.new(params.require(:article).permit(:title, :text, :language_id))
+ @article = Article.new(params.require(:article).permit(:title, :text, :language_id, :form_rules_id, :president_id))
  
   @article.save
   redirect_to @article
@@ -29,6 +29,6 @@ def new
 
   private
   def article_params
-    params.require(:article).permit(:title, :text, :language_id)
+    params.require(:article).permit(:title, :text, :language_id, :form_rules_id, :president_id)
   end
 end

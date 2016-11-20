@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161113231217) do
+ActiveRecord::Schema.define(version: 20161120172411) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -21,10 +21,22 @@ ActiveRecord::Schema.define(version: 20161113231217) do
     t.string   "name"
     t.integer  "article_id"
     t.integer  "language_id"
+    t.integer  "form_rules_id"
+    t.integer  "presisent_id"
+    t.integer  "president_id"
   end
 
   add_index "articles", ["article_id"], name: "index_articles_on_article_id", using: :btree
+  add_index "articles", ["form_rules_id"], name: "index_articles_on_form_rules_id", using: :btree
   add_index "articles", ["language_id"], name: "index_articles_on_language_id", using: :btree
+  add_index "articles", ["president_id"], name: "index_articles_on_president_id", using: :btree
+
+  create_table "form_rules", force: true do |t|
+    t.string   "name"
+    t.boolean  "isArchive"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "languages", force: true do |t|
     t.string   "name"
@@ -37,6 +49,14 @@ ActiveRecord::Schema.define(version: 20161113231217) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "address"
+  end
+
+  create_table "presidents", force: true do |t|
+    t.string   "firstName"
+    t.string   "lastName"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
