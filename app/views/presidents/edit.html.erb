@@ -12,6 +12,15 @@
     <%= f.text_field :lastName %>
   </p>
   <p>
+        <%= f.label :'Гражданство'%><br>
+
+	<%= f.collection_select(:citizen_ship_id, CitizenShip.all, :id, :name) %>
+  </p>
+  <p>
+        <%= f.label :'Пол'%><br>
+        <%= f.collection_radio_buttons :sex_id, Sex.all, :id, :name %>
+  </p>
+  <p>
     <%= f.submit %>
   </p>
  

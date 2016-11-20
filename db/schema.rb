@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161120172411) do
+ActiveRecord::Schema.define(version: 20161120184648) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -30,6 +30,12 @@ ActiveRecord::Schema.define(version: 20161120172411) do
   add_index "articles", ["form_rules_id"], name: "index_articles_on_form_rules_id", using: :btree
   add_index "articles", ["language_id"], name: "index_articles_on_language_id", using: :btree
   add_index "articles", ["president_id"], name: "index_articles_on_president_id", using: :btree
+
+  create_table "citizen_ships", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "form_rules", force: true do |t|
     t.string   "name"
@@ -55,6 +61,17 @@ ActiveRecord::Schema.define(version: 20161120172411) do
     t.string   "firstName"
     t.string   "lastName"
     t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "sex_id"
+    t.integer  "citizen_ship_id"
+  end
+
+  add_index "presidents", ["citizen_ship_id"], name: "index_presidents_on_citizen_ship_id", using: :btree
+  add_index "presidents", ["sex_id"], name: "index_presidents_on_sex_id", using: :btree
+
+  create_table "sexes", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

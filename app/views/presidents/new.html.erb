@@ -1,5 +1,5 @@
 <h1>Форма добавления президента</h1>
-<%= form_for :president, url: president_path do |f| %>
+<%= form_for :president, url: presidents_path do |f| %>
   <p>
     <%= f.label :Имя %><br>
     <%= f.text_field :firstName %>
@@ -7,7 +7,15 @@
  
   <p>
     <%= f.label :Фамилия %><br>
-    <%= f.tex_field :lastName %>
+    <%= f.text_field :lastName %>
+  </p>
+   <p>
+        <%= f.label :'Гражданство'%><br>
+        <%= f.select :citizen_ship_id, options_from_collection_for_select(CitizenShip.all, :id, :name) %>
+  </p>
+  <p>
+        <%= f.label :'Пол'%><br>
+        <%= f.collection_radio_buttons :sex_id, Sex.all, :id, :name %>
   </p>
    <p>
     <%= f.submit %>

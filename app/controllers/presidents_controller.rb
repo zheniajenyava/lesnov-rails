@@ -2,7 +2,7 @@ class PresidentsController < ApplicationController
 def new
   end
  def create
- @president = President.new(params.require(:president).permit(:firstName, :lastName))
+ @president = President.new(params.require(:president).permit(:firstName, :lastName, :citizen_ship_id, :sex_id))
 
   @president.save
   redirect_to @president
@@ -29,7 +29,7 @@ def new
 
   private
   def president_params
-    params.require(:president).permit(:firstName, :lastName)
+    params.require(:president).permit(:firstName, :lastName, :citizen_ship_id, :sex_id)
   end
 
 end
