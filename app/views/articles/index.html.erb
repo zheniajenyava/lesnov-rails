@@ -1,0 +1,19 @@
+<h1>Список государств</h1>
+ 
+<table>
+  <tr>
+    <th>Название</th>
+    <th>Описание</th>
+    <th>Государственный язык</th>
+  </tr>
+ 
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+      <td><%= article.text %></td>
+      <td><%= article.language.name %></td>
+      <td><%= link_to 'Просмотр', article_path(article) %></td>
+       <td><%= link_to 'Редактирование', edit_article_path(article) %></td>
+    </tr>
+  <% end %>
+</table>
