@@ -1,0 +1,15 @@
+<h1>Форма добавления президента</h1>
+<%= form_for :president, url: president_path do |f| %>
+  <p>
+    <%= f.label :Имя %><br>
+    <%= f.text_field :firstName %>
+  </p>
+ 
+  <p>
+    <%= f.label :Фамилия %><br>
+    <%= f.tex_field :lastName %>
+  </p>
+   <p>
+    <%= f.submit %>
+  </p>
+<% end %>

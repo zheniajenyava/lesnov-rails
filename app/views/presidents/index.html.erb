@@ -1,0 +1,15 @@
+<h1>Список президентов</h1>
+ 
+<table>
+  <tr>
+    <th>Имя Фамилия</th>
+  </tr>
+ 
+  <% @presidents.each do |item| %>
+    <tr>
+      <td><%= item.firstName %> <%= item.lastName %></td>
+      <td><%= link_to 'Просмотр', president_path(item) %></td>
+       <td><%= link_to 'Редактирование', edit_president_path(item) %></td>
+    </tr>
+  <% end %>
+</table>

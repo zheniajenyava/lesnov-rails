@@ -1,0 +1,20 @@
+<h1>Редактирование данных президента</h1>
+ 
+<%= form_for :president, url: president_path(@president), method: :patch do |f| %> 
+  
+  <p>
+    <%= f.label :Имя %><br>
+    <%= f.text_field :firstName %>
+  </p>
+ 
+  <p>
+    <%= f.label :Фамилия %><br>
+    <%= f.text_field :lastName %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+ 
+<% end %>
+ 
+<%= link_to 'Вернуться', presidents_path %>
