@@ -1,13 +1,40 @@
 <p>
-  <strong>Title:</strong>
+  <strong>Название:</strong>
   <%= @article.title %>
 </p>
  
  <p>
-  <strong>Text:</strong>
+  <strong>Описание:</strong>
   <%= @article.text %>
 </p>
 <p>
   <strong>Язык:</strong>
   <%= @article.language.name %>
 </p>
+<p>
+  <strong>Форма правления:</strong>
+  <% if @article.rule != nil%>
+  <%= @article.rule.name %>
+  <%end%>
+</p>
+<p>
+<strong>Президент:</strong>
+  <% if @article.president != nil%>
+  <%= @article.president.name_of_president %>
+<%end%>
+</p>
+<p>
+<strong>Производство:</strong>
+  <% if @article.productions != nil%>
+	<% @article.productions.each do |item| %>
+	 <br> <%= item.name %>
+	<% end %>
+  <%end%>
+</p>
+<p>
+<strong>Домен первого уровня:</strong>
+  <% if @article.domain != nil%>
+  <%= @article.domain.name %>
+<%end%>
+</p>
+

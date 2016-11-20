@@ -16,7 +16,7 @@
   </p>
   <p>
 	<%= f.label :'Форма правления'%><br>
-	<%= f.collection_radio_buttons :form_rules_id, FormRules.all, :id, :name_with_initial %>
+	<%= f.collection_radio_buttons :rule_id, Rule.all, :id, :name_with_initial %>
   </p> 
    <p>
 	<%= f.label :'Президент'%><br>
@@ -31,6 +31,10 @@
 	<% end %>
   </p>
   <p>
-    <%= f.submit %>
+        <%= f.label :'Домен первого уровня'%><br>
+        <%= f.select :domain_id, options_from_collection_for_select(Domain.all, :id, :name) %>
+  </p>
+  <p>
+    <%= f.submit "Создать" %>
   </p>
 <% end %>

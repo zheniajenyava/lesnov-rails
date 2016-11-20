@@ -31,7 +31,7 @@
   </p>
   <p>
         <%= f.label :'Форма правления'%><br>
-        <%= f.collection_radio_buttons :form_rules_id, FormRules.all, :id, :name_with_initial %>
+        <%= f.collection_radio_buttons :rule_id, Rule.all, :id, :name_with_initial %>
   </p>
    <p>
         <%= f.label :'Президент'%><br>
@@ -43,10 +43,12 @@
 	  <%= item.label(:"data-value" => item.value) { item.check_box + item.text }%>
         <% end %>
   </p>
-
- 
   <p>
-    <%= f.submit %>
+     <%= f.label :'Домен первого уровня'%><br>
+     <%= f.collection_select(:domain_id, Domain.all, :id, :name) %>
+  </p> 
+  <p>
+    <%= f.submit "Сохранить" %>
   </p>
  
 <% end %>
