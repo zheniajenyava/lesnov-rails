@@ -35,6 +35,19 @@
         <%= f.select :domain_id, options_from_collection_for_select(Domain.all, :id, :name) %>
   </p>
   <p>
+        <%= f.label :'Континент'%><br>
+        <%= f.select :continent_id, options_from_collection_for_select(Continent.all, :id, :name) %>
+  </p>
+  <p>
+        <%= f.label :'Население млн'%><br>
+        <%= f.select :population_id, options_from_collection_for_select(Population.all, :id, :count) %>
+  </p>
+  <p>
+        <%= f.label :'Телефонный код'%><br>
+        <%= f.select :telephoneCode_id, options_from_collection_for_select(TelephoneCode.all, :id, :code) %>
+  </p>
+
+  <p>
     <%= f.submit "Создать" %>
   </p>
 <% end %>

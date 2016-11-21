@@ -1,3 +1,2 @@
-class Domain < ActiveRecord::Base
-has_many :articles
+class Domain < ApplicationRecord
 end

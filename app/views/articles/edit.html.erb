@@ -48,6 +48,19 @@
      <%= f.collection_select(:domain_id, Domain.all, :id, :name) %>
   </p> 
   <p>
+     <%= f.label :'Континент'%><br>
+     <%= f.collection_select(:continent_id, Continent.all, :id, :name) %>
+  </p>
+  <p>
+     <%= f.label :'Население млн.'%><br>
+     <%= f.collection_select(:population_id, Population.all, :id, :count) %>
+  </p>
+  <p>
+     <%= f.label :'Телефонный код'%><br>
+     <%= f.collection_select(:telephoneCode_id, TelephoneCode.all, :id, :code) %>
+  </p>
+
+  <p>
     <%= f.submit "Сохранить" %>
   </p>
  

@@ -2,11 +2,19 @@ class ArticlesController < ApplicationController
 def new
   end
  def create
- @article = Article.new(params.require(:article).permit(:title, :text, :language_id, :rule_id, :president_id,:domain_id, :production_ids=>[]))
+ @article = Article.new(params.require(:article).permit(:title, :text, :language_id, :rule_id, :president_id, :domain_id, :continent_id, :population_id, :telephoneCode_id, :production_ids=>[]))
  
   @article.save
   redirect_to @article
   end
+
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+ 
+    redirect_to articles_path
+  end
+
   def update
   @article = Article.find(params[:id])
  
@@ -29,6 +37,6 @@ def new
 
   private
   def article_params
-    params.require(:article).permit(:title, :text, :language_id, :rule_id, :president_id, :domain_id, :production_ids=>[])
+    params.require(:article).permit(:title, :text, :language_id, :rule_id, :president_id, :domain_id, :continent_id, :population_id, :telephoneCode_id, :production_ids=>[])
   end
 end

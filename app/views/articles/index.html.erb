@@ -5,6 +5,8 @@
     <th>Название</th>
     <th>Описание</th>
     <th>Государственный язык</th>
+    <th>Население</th>
+    <th>Домен первого уровня</th>
   </tr>
  
   <% @articles.each do |article| %>
@@ -12,8 +14,11 @@
       <td><%= article.title %></td>
       <td><%= article.text %></td>
       <td><%= article.language.name %></td>
+      <td><%= article.population.count if article.population.nil? == false  %></td>
+      <td><%= article.domain.name if article.domain.nil? == false  %></td>
       <td><%= link_to 'Просмотр', article_path(article) %></td>
        <td><%= link_to 'Редактирование', edit_article_path(article) %></td>
+      <td><%= link_to "Удалить", article_path(article.id, article), method: :delete, data: {confirm: "Запись будет удалена. Ок?"} %></td>
     </tr>
   <% end %>
 </table>

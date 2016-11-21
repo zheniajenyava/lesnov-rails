@@ -37,4 +37,23 @@
   <%= @article.domain.name %>
 <%end%>
 </p>
+<p>
+<strong>Континент:</strong>
+  <% if @article.continent != nil%>
+  <%= @article.continent.name %>
+<%end%>
+</p>
+<p>
+<strong>Население:</strong>
+  <% if @article.population != nil%>
+  <%= @article.population.count %>
+<%end%>
+</p>
+
+<p>
+<strong>Телефонный код:</strong>
+  <% if @article.telephoneCode != nil%>
+  <%= @article.telephoneCode.code %>
+<%end%>
+</p>
 
